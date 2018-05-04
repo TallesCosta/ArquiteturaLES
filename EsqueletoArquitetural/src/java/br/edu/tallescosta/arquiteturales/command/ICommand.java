@@ -2,6 +2,8 @@ package br.edu.tallescosta.arquiteturales.command;
 
 import br.edu.tallescosta.arquiteturales.entidade.Entidade;
 import br.edu.tallescosta.arquiteturales.entidade.Resultado;
+import br.edu.tallescosta.arquiteturales.facade.Facade;
+import br.edu.tallescosta.arquiteturales.facade.IFacade;
 
 /**
  * Encapsula a chamada de um método que realiza algo desejado.
@@ -10,6 +12,8 @@ import br.edu.tallescosta.arquiteturales.entidade.Resultado;
  */
 public interface ICommand {
     
+	static IFacade FACADE = new Facade();
+	
     Resultado executar(Entidade entidade);
     
 }
