@@ -1,6 +1,14 @@
 package br.edu.tallescosta.arquiteturales;
 
+import br.edu.tallescosta.arquiteturales.command.EditarCmd;
+import br.edu.tallescosta.arquiteturales.command.ExcluirCmd;
+import br.edu.tallescosta.arquiteturales.command.ICommand;
+import br.edu.tallescosta.arquiteturales.command.ListarCmd;
+import br.edu.tallescosta.arquiteturales.command.SalvarCmd;
+import br.edu.tallescosta.arquiteturales.utilidade.Utilidades;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Servlet", urlPatterns = {"/servlet"})
 public class Servlet extends HttpServlet {
 
+    Map<String, ICommand> commands;
+    
+    public Servlet() {
+        commands = new HashMap<>();
+        
+        commands.put(Utilidades.SALVAR, new SalvarCmd());
+        commands.put(Utilidades.LISTAR, new ListarCmd());
+        commands.put(Utilidades.EDITAR, new EditarCmd());
+        commands.put(Utilidades.EXCLUIR, new ExcluirCmd());
+    }
+    
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
 	 * methods.

@@ -12,7 +12,10 @@ import br.edu.tallescosta.arquiteturales.facade.IFacade;
  */
 public interface ICommand {
     
-	static IFacade FACADE = new Facade();
+    /*
+    * Atributos em Interfaces são por default "static final".
+    */
+	IFacade FACADE = new Facade();
 	
     Resultado executar(Entidade entidade);
     
